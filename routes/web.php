@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('/forms', 'FormsController');
+Route::resource('/usertypes', 'UserTypesController');
+Route::resource('/utprivileges', 'UTPrivilegesController');
+
+Route::resource('/countries', 'CountriesController');
+Route::resource('/goverments', 'GovernmentsController');
+Route::resource('/cities', 'CitiesController');
+Route::resource('/areas', 'AreasController');
+

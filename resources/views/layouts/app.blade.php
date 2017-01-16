@@ -149,6 +149,7 @@
                             </div>
                         </div>
                     </div>
+                    @yield('content')
                 </div>
             </div>
             <!-- END CONTENT BODY -->

@@ -45,13 +45,13 @@
             <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
-                    <span class="title">UI Features</span>
+                    <span class="title">General Setup</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item  ">
-                        <a href="ui_colors.html" class="nav-link ">
-                            <span class="title">Color Library</span>
+                        <a href="{!! url('/forms') !!}" class="nav-link ">
+                            <span class="title">Forms</span>
                         </a>
                     </li>
                     <li class="nav-item  ">

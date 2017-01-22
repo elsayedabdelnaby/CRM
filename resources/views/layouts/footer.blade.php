@@ -22,6 +22,12 @@
 <script src="{!! url('/assets') !!}/morris/raphael-min.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/js/counterup/jquery.waypoints.min.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/js/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+<!-- Form Validation -->
+<script src="{!! url('/assets') !!}/js/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="{!! url('/assets') !!}/js/jquery-validation/js/inputs-validation.js" type="text/javascript"></script>
+<script src="{!! url('/assets') !!}/js/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+<script src="{!! url('/assets') !!}/pages/scripts/form-validation-md.min.js" type="text/javascript"></script>
+<!-- END Form Validation -->
 <!--script src="{!! url('/assets') !!}/js/amcharts/amcharts/amcharts.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/js/amcharts/amcharts/serial.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/js/amcharts/amcharts/pie.js" type="text/javascript"></script>

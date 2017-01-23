@@ -12,6 +12,9 @@
 <link href="{!! url('/assets') !!}/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
+<link href="{!! url('/assets') !!}/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
 <link href="{!! url('/assets') !!}/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
 <link href="{!! url('/assets') !!}/morris/morris.css" rel="stylesheet" type="text/css" />
 <link href="{!! url('/assets') !!}/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />

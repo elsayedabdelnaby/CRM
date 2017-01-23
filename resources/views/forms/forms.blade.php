@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group form-md-line-input">
-                                {!! Form::text('name_en', null, array('class'=>'form-control english-validation', 'id'=>'form_control_1', 'placeholder'=>'Enter english name')) !!}
+                                {!! Form::text('name_en', null, array('class'=>'form-control english-validation', 'id'=>'form_control_1')) !!}
                                 @if (isset($errors[0]))
                                 <span id="form_control_1-error" class="help-block help-block-error" style="color: red;">This field is required.</span>
                                 @endif
@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group form-md-line-input">
-                                {!! Form::text('name_ar', null, array('id'=>'form_control_1', 'class'=>'form-control arabic-validation', 'placeholder'=>'Enter arabic name')) !!}
+                                {!! Form::text('name_ar', null, array('id'=>'form_control_1', 'class'=>'form-control arabic-validation')) !!}
                                 @if(isset($errors[1]))
                                 <span id="form_control_1-error" class="help-block help-block-error" style="color: red;">This field is required.</span>
                                 @endif
@@ -232,8 +232,55 @@
                     </form>
                     <!-- END FORM-->
                 </div>
+                <!-- BEGIN SAMPLE TABLE PORTLET-->
+
+                <div class="portlet box green ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-cogs"></i>All Forms</div>
+                        <div class="tools">
+                            <a href="" class="collapse"><img src="{!! url('assets') !!}/img/icons/collapse.png" style="width: 25px;height: 20px;"></a>
+                            <a href="" class="reload"><img src="{!! url('assets') !!}/img/icons/reload.png" style="width: 25px;height: 20px;"></a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table data-toggle="table"  data-height="299" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true">
+                            <thead>
+                                <tr>
+                                    <th  data-align="right">Item ID</th>
+                                    <th  data-align="center">Item Name</th>
+                                    <th  data-align="left">Item Price</th>
+                                    <th  data-align="left">address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>12</td>
+                                    <td>elsayed</td>
+                                    <td>ali</td>
+                                    <td>cairo</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>mohamed</td>
+                                    <td>ali</td>
+                                    <td>giza</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>hassan</td>
+                                    <td>ali</td>
+                                    <td>alex</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END SAMPLE TABLE PORTLET-->
+
             </div>
             <!-- END VALIDATION STATES-->
+
         </div>
     </div>
     @endsection

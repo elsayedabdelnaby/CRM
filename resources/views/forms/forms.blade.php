@@ -12,10 +12,25 @@
                     <span class="caption-subject font-green sbold">Form Data</span>
                 </div>
             </div>
+            @if(Session::has('creation_successfully'))
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    <img src="{!! url('assets') !!}/img/icons/close.png" style="width: 25px;height: 20px;">
+                </button>
+                <strong>Success!</strong> {{Session::get('creation_successfully')}}.
+            </div>
+            @elseif(Session::has('creation_exception'))
+            <div class="alert alert-danger alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong> {{Session::get('creation_exception')}}.
+            </div>
+            @endif
             <div class="portlet-body">
                 <!-- BEGIN FORM-->
+                @if($action == 'insert')
                 {!! Form::open(array('route'=>'forms.store','files'=>true, 'id'=>'form_sample_2', 'novalidate'=>'novalidate')) !!}
                 <div class="form-body">
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group form-md-line-input">
@@ -232,6 +247,53 @@
                     </form>
                     <!-- END FORM-->
                 </div>
+                @elseif($action == 'update')
+
+                {!! Form::model($form,array('method'=>'PATCH','action'=>['FormsController@update', $form->id], 'id'=>'form_sample_2', 'novalidate'=>'novalidate')) !!}
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-md-line-input">
+                                {!! Form::text('name_en', null, array('class'=>'form-control english-validation', 'id'=>'form_control_1')) !!}
+                                @if (isset($errors[0]))
+                                <span id="form_control_1-error" class="help-block help-block-error" style="color: red;">This field is required.</span>
+                                @endif
+                                <label for="form_control_1">English Name
+                                    <span class="required" aria-required="true">*</span>
+                                </label>
+                                <span class="help-block">Enter english name...</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-md-line-input">
+                                {!! Form::text('name_ar', null, array('id'=>'form_control_1', 'class'=>'form-control arabic-validation')) !!}
+                                @if(isset($errors[1]))
+                                <span id="form_control_1-error" class="help-block help-block-error" style="color: red;">This field is required.</span>
+                                @endif
+                                <label for="form_control_1">Arabic Name
+                                    <span class="required" aria-required="true">*</span>
+                                </label>
+                                <span class="help-block">Enter arabic name...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input class="btn green" type="submit" value="Insert">
+                                    <button type="reset" class="btn default">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
+                    <form>
+                        <input type="hidden">
+                    </form>
+                    <!-- END FORM-->
+                </div>
+                @endif
                 <!-- BEGIN SAMPLE TABLE PORTLET-->
 
                 <div class="portlet box green ">
@@ -244,34 +306,29 @@
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <table data-toggle="table"  data-height="299" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true">
+                        <table data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true">
                             <thead>
                                 <tr>
-                                    <th  data-align="right">Item ID</th>
-                                    <th  data-align="center">Item Name</th>
-                                    <th  data-align="left">Item Price</th>
-                                    <th  data-align="left">address</th>
+                                    <th  data-align="right">ID</th>
+                                    <th  data-align="center">English Name</th>
+                                    <th  data-align="center">Arabic Name</th>
+                                    <th  data-align="center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($forms as $form)
                                 <tr>
-                                    <td>12</td>
-                                    <td>elsayed</td>
-                                    <td>ali</td>
-                                    <td>cairo</td>
+                                    <td>{{$form->id}}</td>
+                                    <td>{{$form->name_en}}</td>
+                                    <td>{{$form->name_ar}}</td>
+                                    <td>
+                                        <a href="forms/{{$form->id}}/edit" class="btn btn-outline btn-circle btn-sm purple">
+                                            <i class="fa fa-edit"></i> Edit </a>
+                                        <a href="forms/{{$form->id}}/destroy" class="btn btn-outline btn-circle dark btn-sm black">
+                                            <i class="fa fa-trash-o"></i> Delete </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>13</td>
-                                    <td>mohamed</td>
-                                    <td>ali</td>
-                                    <td>giza</td>
-                                </tr>
-                                <tr>
-                                    <td>14</td>
-                                    <td>hassan</td>
-                                    <td>ali</td>
-                                    <td>alex</td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

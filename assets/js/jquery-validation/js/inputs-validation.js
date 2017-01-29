@@ -4,7 +4,7 @@ name_ar.onchange = function () {
     var span = document.createElement('span');
     span.setAttribute('id', 'form_control_1-error');
     span.setAttribute('class', 'help-block help-block-error');
-    
+
     name_ar.parentNode.setAttribute('class', "form-group form-md-line-input has-error");
     console.log(name_ar.parentNode.classList);
     if (name_ar.value) {
@@ -14,7 +14,7 @@ name_ar.onchange = function () {
             }
             var textNode = document.createTextNode('Must be arabic letters');
             span.appendChild(textNode);
-            span.style.color = "red";
+            span.style.color = "#e73d4a";
         } else {
             if (name_ar.parentNode.children.length === 4) {
                 name_ar.parentNode.removeChild(document.getElementsByClassName('arabic-validation')[0].parentNode.children[1]);
@@ -26,7 +26,7 @@ name_ar.onchange = function () {
         }
         var textNode = document.createTextNode('This field is required');
         span.appendChild(textNode);
-        span.style.color = "red";
+        span.style.color = "#e73d4a";
     }
     name_ar.parentNode.insertBefore(span, name_ar.parentNode.children[1]);
 };
@@ -37,7 +37,7 @@ name_en.onchange = function () {
     var span = document.createElement('span');
     span.setAttribute('id', 'form_control_1-error');
     span.setAttribute('class', 'help-block help-block-error');
-    
+
     name_en.parentNode.setAttribute('class', "form-group form-md-line-input has-error");
     console.log(name_en.parentNode.classList);
     if (name_en.value) {
@@ -47,7 +47,7 @@ name_en.onchange = function () {
             }
             var textNode = document.createTextNode('Must be english letters');
             span.appendChild(textNode);
-            span.style.color = "red";
+            span.style.color = "#e73d4a";
         } else {
             if (name_en.parentNode.children.length === 4) {
                 name_en.parentNode.removeChild(document.getElementsByClassName('english-validation')[0].parentNode.children[1]);
@@ -59,7 +59,7 @@ name_en.onchange = function () {
         }
         var textNode = document.createTextNode('This field is required');
         span.appendChild(textNode);
-        span.style.color = "red";
+        span.style.color = "#e73d4a";
     }
     name_en.parentNode.insertBefore(span, name_en.parentNode.children[1]);
 };

@@ -14,7 +14,9 @@ class FormsController extends Controller {
      */
     public function index() {
         $errors = array();
-        return view('forms.forms', compact('errors'));
+        $action = "insert";
+        $forms = Form::all();
+        return view('forms.forms', compact('errors', 'action', 'forms'));
     }
 
     /**
@@ -23,7 +25,7 @@ class FormsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        //
+        $action = "insert";
     }
 
     /**
@@ -33,23 +35,29 @@ class FormsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        $errors     = array();
-        $input      = $request->all();
-        
+        $errors = array();
+        $input = $request->all();
+
         $name_en = $input['name_en'];
         $name_ar = $input['name_ar'];
-
-        if (empty($name_en)) {
-            $errors[0] = "This field is required";
-        }
-        if (empty($name_ar)) {
-            $errors[1] = "This field is required";
-        }
+//        $isArabic = "/^([\0-\9]|[\u0600-\u06ff]|[\u0750-\u077f]|[\ufb50-\ufbc1]|[\ufbd3-\ufd3f]|[\ufd50-\ufd8f]|[\ufd92-\ufdc7]|[\ufe70-\ufefc]|[\ufdf0-\ufdfd]|[ ])*$/g";
+//        if (empty($name_en)) {
+//            $errors[0] = "This field is required";
+//        } elseif(preg_match($isArabic, $name_en)) {
+//            $errors[0] = "Must be english letters";
+//        }
+//        if (empty($name_ar)) {
+//            $errors[1] = "This field is required";
+//        } elseif (!preg_match($isArabic, $name_ar)) {
+//            $errors[1] = "Must be arabic letters";
+//        }
         if (empty($errors)) {
-            try{
+            try {
                 Form::create($input);
+                session()->flash('creation_successfully', 'Form Created Successfully');
+                return redirect('/forms');
             } catch (\Exception $ex) {
-                
+                return redirect('/forms')->with(['creation_exception' => $ex->getMessage()]);
             }
         } else {
             return view('forms.forms', compact('errors'));
@@ -73,7 +81,11 @@ class FormsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        $action = "update";
+        $errors = array();
+        $form = Form::findOrFail($id);
+        $forms = Form::all();
+        return view('forms.forms', compact('action', 'form', 'forms', 'errors'));
     }
 
     /**
@@ -84,7 +96,7 @@ class FormsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+        $action = "insert";
     }
 
     /**
@@ -94,7 +106,7 @@ class FormsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        $action = "insert";
     }
 
 }

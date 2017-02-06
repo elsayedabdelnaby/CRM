@@ -22,12 +22,6 @@
 <script src="{!! url('/assets') !!}/morris/raphael-min.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/js/counterup/jquery.waypoints.min.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/js/counterup/jquery.counterup.min.js" type="text/javascript"></script>
-<!-- Form Validation -->
-<script src="{!! url('/assets') !!}/js/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-<script src="{!! url('/assets') !!}/js/jquery-validation/js/inputs-validation.js" type="text/javascript"></script>
-<script src="{!! url('/assets') !!}/js/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
-<script src="{!! url('/assets') !!}/pages/scripts/form-validation-md.min.js" type="text/javascript"></script>
-<!-- END Form Validation -->
 <!--script src="{!! url('/assets') !!}/js/amcharts/amcharts/amcharts.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/js/amcharts/amcharts/serial.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/js/amcharts/amcharts/pie.js" type="text/javascript"></script>
@@ -64,12 +58,6 @@
 <script src="{!! url('/assets') !!}/layouts/layout2/scripts/demo.min.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="{!! url('/assets') !!}/bootstrap-table/bootstrap-table.min.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="{!! url('/assets') !!}/pages/scripts/table-bootstrap.min.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
 <!-- END FOOTER -->
 <!--[if lt IE 9]>
 <script src="{!! url('/assets') !!}/global/plugins/respond.min.js"></script>

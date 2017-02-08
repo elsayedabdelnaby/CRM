@@ -16,6 +16,10 @@
 <script src="{!! url('/assets') !!}/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="{!! url('/assets') !!}/js/datatable.js" type="text/javascript"></script>
+<script src="{!! url('/assets') !!}/datatables/datatables.min.js" type="text/javascript"></script>
+<script src="{!! url('/assets') !!}/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+<script src="{!! url('/assets') !!}/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/js/moment.min.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/morris/morris.min.js" type="text/javascript"></script>
@@ -46,6 +50,7 @@
 <script src="{!! url('/assets') !!}/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+<script src="{!! url('/assets') !!}/js/table-datatables-buttons.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="{!! url('/assets') !!}/js/app.min.js" type="text/javascript"></script>

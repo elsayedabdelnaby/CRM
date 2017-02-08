@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('/forms', 'FormsController');
+Route::get('/forms/{id}/destroy', 'FormsController@destroy');
 Route::resource('/usertypes', 'UserTypesController');
 Route::resource('/utprivileges', 'UTPrivilegesController');
 

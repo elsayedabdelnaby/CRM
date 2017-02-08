@@ -14,8 +14,9 @@ class FormsController extends Controller
      */
     public function index()
     {
-        $forms = Form::all();
-        return view('forms.forms', compact('forms'));
+        $form_type  = 'insert';
+        $forms      = Form::all();
+        return view('forms.forms', compact('form_type', 'forms'));
     }
 
     /**
@@ -36,7 +37,14 @@ class FormsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_type        = 'insert';
+        $input            = $request->all();
+        $input['name_en'] = $input['english_name'];
+        $input['name_ar'] = $input['arabic_name'];
+        Form::create($input);
+        $forms      = Form::all();
+        $form_type  = 'insert';
+        return view('forms.forms', compact('form_type', 'forms'));
     }
 
     /**
@@ -58,7 +66,10 @@ class FormsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $form_type  = 'update';
+        $form       = Form::findOrFail($id);
+        $forms      = Form::all();
+        return view('forms.forms', compact('form_type', 'forms', 'form'));
     }
 
     /**
@@ -81,6 +92,8 @@ class FormsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $form_type  = 'insert';
+        $forms      = Form::all();
+        return view('forms.forms', compact('form_type', 'forms'));
     }
 }

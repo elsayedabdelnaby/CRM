@@ -16,7 +16,8 @@ class FormsController extends Controller
     {
         $form_type  = 'insert';
         $forms      = Form::all();
-        return view('forms.forms', compact('form_type', 'forms'));
+        $form       = array();
+        return view('forms.forms', compact('form_type', 'forms', 'form'));
     }
 
     /**
@@ -26,7 +27,7 @@ class FormsController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/forms');
     }
 
     /**
@@ -39,12 +40,11 @@ class FormsController extends Controller
     {
         $form_type        = 'insert';
         $input            = $request->all();
-        $input['name_en'] = $input['english_name'];
-        $input['name_ar'] = $input['arabic_name'];
         Form::create($input);
         $forms      = Form::all();
         $form_type  = 'insert';
-        return view('forms.forms', compact('form_type', 'forms'));
+        $form       = array();
+        return view('forms.forms', compact('form_type', 'forms', 'form'));
     }
 
     /**
@@ -67,8 +67,13 @@ class FormsController extends Controller
     public function edit($id)
     {
         $form_type  = 'update';
-        $form       = Form::findOrFail($id);
         $forms      = Form::all();
+        try {
+            $form   = Form::findOrFail($id);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            return redirect()->back();
+        }
         return view('forms.forms', compact('form_type', 'forms', 'form'));
     }
 
@@ -94,6 +99,7 @@ class FormsController extends Controller
     {
         $form_type  = 'insert';
         $forms      = Form::all();
-        return view('forms.forms', compact('form_type', 'forms'));
+        $form       = array();
+        return view('forms.forms', compact('form_type', 'forms', 'form'));
     }
 }

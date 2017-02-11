@@ -27,7 +27,7 @@
         </div>
         <div class="form-actions noborder">
             <button type="reset" class="btn default pull-right" style="margin-left:9px;">Cancel</button>
-            <button type="button" class="btn blue pull-right submit-button">Add</button>
+            <input type="submit" class="btn blue pull-right submit-button" value="Add">
         </div>
         {!! Form::close() !!}
     </div>

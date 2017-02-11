@@ -59,7 +59,6 @@ var InputValidation = function (element) {
         isEnglish:        check_english_required
     };
 };
-
 $('.submit-button').bind('click', function () {
     'use strict';
     var aAllTextInputs   = $(this).parents('form').find('input[type="text"]'),
@@ -67,8 +66,8 @@ $('.submit-button').bind('click', function () {
         aAllRadioButtons = $(this).parents('form').find('input[type="radio"]'),
         aAllSelects      = $(this).parents('form').find('select'),
         aAllTextAreas    = $(this).parents('form').find('textarea'),
-        index;
-    
+        index,
+        bError          = 0;
     for (index = 0; index < aAllTextInputs.length; index += 1) {
         var oInput = new InputValidation(aAllTextInputs[index]),
             sError = "";
@@ -95,5 +94,32 @@ $('.submit-button').bind('click', function () {
                 sError = "This field must be in English Letters";
             }
         }
+        if (sError !== "") {
+            bError = 1;
+            if (($($(aAllTextInputs[index]).parent()).children('span')).text() !== "") {
+                $(aAllTextInputs[index]).parent().find(".is-error").text(sError);
+            } else {
+                var oSpanError = document.createElement("span");
+                oSpanError.setAttribute("class", "is-error");
+                oSpanError.appendChild(document.createTextNode(sError));
+                $(aAllTextInputs[index]).parent().append(oSpanError);
+                $(aAllTextInputs[index]).parent().addClass("has-error");
+            }
+        } else if (($($(aAllTextInputs[index]).parent()).children('span')).text() !== "") {
+            $(aAllTextInputs[index]).parent().removeClass('has-error');
+            ($($(aAllTextInputs[index]).parent()).children('span')).remove();
+        }
     }
+    
+    if(bError === 1) {
+        alert(bError);
+        $($(".submit-button").parents().find("form")).submit(function(e) {
+                return false;
+            });
+    } else {
+        $($(".submit-button").parents().find("form")).submit(function(e) {
+                $(this).unbind('submit').submit();
+            });
+    }
+    
 });

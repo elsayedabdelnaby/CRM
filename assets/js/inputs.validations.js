@@ -1,4 +1,4 @@
-/*global $, console*/
+/*global $, console, alert*/
 var InputValidation = function (element) {
     'use strict';
 
@@ -112,7 +112,6 @@ $('.submit-button').bind('click', function () {
     }
     
     if(bError === 1) {
-        alert(bError);
         $($(".submit-button").parents().find("form")).submit(function(e) {
                 return false;
             });

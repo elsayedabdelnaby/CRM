@@ -42,6 +42,13 @@
                         </ul>
                     </div>
                     <!-- END PAGE HEADER-->
+                       @include('flash::message')
+                       @if(Session::has('error-message'))
+                       <div class="alert alert-danger alert-dismissable">
+                           <a href="#" class="close" data-dismiss="alert" aria-label="close"><span><strong>X</strong></span></a>
+                            <strong>Error!</strong> {{Session::get('error-message')}}.
+                       </div>
+                       @endif
                        @yield('content')
                     
                 </div>

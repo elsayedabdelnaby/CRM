@@ -38,13 +38,10 @@ class FormsController extends Controller
      */
     public function store(Request $request)
     {
-        $form_type        = 'insert';
         $input            = $request->all();
         Form::create($input);
-        $forms      = Form::all();
-        $form_type  = 'insert';
-        $form       = array();
-        return view('forms.forms', compact('form_type', 'forms', 'form'));
+        flash()->overlay("Form Created successfully", 'Create');
+        return redirect('/forms');
     }
 
     /**
@@ -97,9 +94,13 @@ class FormsController extends Controller
      */
     public function destroy($id)
     {
-        $form_type  = 'insert';
-        $forms      = Form::all();
-        $form       = array();
-        return view('forms.forms', compact('form_type', 'forms', 'form'));
+        try {
+            $x = 12/0;
+            Form::findOrFail($id)->delete();
+            flash()->overlay("Form deleted successfully", 'Delete');
+            return redirect('/forms');
+        } catch(\Exception $ex) {
+            return redirect('/forms')->with("error-message", "Delete Exception is " . $ex->getMessage());
+        }
     }
 }

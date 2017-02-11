@@ -83,7 +83,14 @@ class FormsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $input = $request->all();
+            Form::findOrFail($id)->update($input);
+            flash()->overlay("Form updated successfully", 'Update');
+            return redirect('/forms');
+        } catch(\Exception $ex) {
+            return redirect('/forms/' . $id . '/edit')->with("error-message", "Update Exception is " . $ex->getMessage());
+        }
     }
 
     /**
@@ -95,7 +102,6 @@ class FormsController extends Controller
     public function destroy($id)
     {
         try {
-            $x = 12/0;
             Form::findOrFail($id)->delete();
             flash()->overlay("Form deleted successfully", 'Delete');
             return redirect('/forms');

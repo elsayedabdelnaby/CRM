@@ -41,23 +41,23 @@
         </div>
     </div>
     <div class="portlet-body form">
-        {!! Form::model($form, array('Method'=>'PATCH', 'role'=>'form', 'action'=>['FormsController@update', $form->id])) !!}
+        {!! Form::model($form, array('method'=>'PATCH', 'action'=>['FormsController@update', $form->id],'role'=>'form', 'novalidate')) !!}
         <div class="form-body row">
             <div class="col-md-1"></div>
             <div class="form-group form-md-line-input form-md-floating-label col-md-4">
-                {!! Form::text('name_en', null, array('class'=>'form-control', 'id'=>'form_control_1')) !!}
+                {!! Form::text('name_en', null, array('class'=>'form-control', 'id'=>'form_control_1', 'required', 'english')) !!}
                 <label for="form_control_1">English Name</label>
             </div>
             <div class="col-md-1"></div>
             <div class="form-group form-md-line-input form-md-floating-label col-md-4">
-                {!! Form::text('name_ar', null, array('class'=>'form-control', 'id'=>'form_control_1')) !!}
+                {!! Form::text('name_ar', null, array('class'=>'form-control', 'id'=>'form_control_1', 'required', 'arabic')) !!}
                 <label for="form_control_1">Arabic Name</label>
             </div>
             <div class="col-md-1"></div>
         </div>
         <div class="form-actions noborder">
             <button class="btn default pull-right" style="margin-left:9px;"><a href="{!! url('/forms') !!}">Cancel</a></button>
-            <button type="submit" class="btn blue pull-right">Update</button>
+            <input type="submit" class="btn blue pull-right submit-button" value="Update">
         </div>
         {!! Form::close() !!}
     </div>

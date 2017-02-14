@@ -38,7 +38,7 @@ class FormsController extends Controller
      */
     public function store(Request $request)
     {
-        $input            = $request->all();
+        $input = $request->all();
         Form::create($input);
         flash()->overlay("Form Created successfully", 'Create');
         return redirect('/forms');
@@ -52,7 +52,12 @@ class FormsController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $form = Form::findOrFail($id);
+            return redirect('/forms/' . $id . '/edit');
+        } catch(\Exception $ex) {
+            return redirect('/forms')->with('error-message', "Show Exception is " . $ex->getMessage());
+        }
     }
 
     /**

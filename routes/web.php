@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('/forms', 'FormsController');
 Route::get('/forms/{id}/destroy', 'FormsController@destroy');
+Route::resource('/modules', 'ModulesController');
+Route::get('/modules/{id}/destroy', 'ModulesController@destroy');
 Route::resource('/usertypes', 'UserTypesController');
 Route::resource('/utprivileges', 'UTPrivilegesController');
 
@@ -28,4 +30,3 @@ Route::resource('/countries', 'CountriesController');
 Route::resource('/goverments', 'GovernmentsController');
 Route::resource('/cities', 'CitiesController');
 Route::resource('/areas', 'AreasController');
-

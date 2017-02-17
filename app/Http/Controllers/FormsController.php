@@ -74,7 +74,7 @@ class FormsController extends Controller
             $form   = Form::findOrFail($id);
         } catch (\Exception $e) {
             $e->getMessage();
-            return redirect()->back();
+            return redirect('/forms')->with('error-message', 'Edit Exception is' . $e->getMessage());
         }
         return view('forms.forms', compact('form_type', 'forms', 'form'));
     }

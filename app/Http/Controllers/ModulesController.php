@@ -29,4 +29,35 @@ class ModulesController extends Controller
     {
         return redirect('/modules');
     }
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $input = $request->all();
+        Module::create($input);
+        flash()->overlay("Module Created successfully", 'Create');
+        return redirect('/modules');
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        try {
+            $module = Module::findOrFail($id);
+            return redirect('/modules/' . $id . '/edit');
+        } catch(\Exception $ex) {
+            return redirect('/modules')->with('error-message', "Show Exception is " . $ex->getMessage());
+        }
+    }
+
 }

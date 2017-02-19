@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Country;
 
 class CountriesController extends Controller
 {
@@ -13,7 +14,10 @@ class CountriesController extends Controller
      */
     public function index()
     {
-        //
+        $form_type  = 'insert';
+        $countries      = Country::all();
+        $country       = array();
+        return view('addresses.countries', compact('form_type', 'countries', 'country'));
     }
 
     /**

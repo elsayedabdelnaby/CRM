@@ -27,7 +27,7 @@ class CountriesController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/countries');
     }
 
     /**
@@ -38,7 +38,10 @@ class CountriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Country::create($input);
+        flash()->overlay("Country Created successfully", 'Create');
+        return redirect('/countries');
     }
 
     /**
@@ -49,7 +52,12 @@ class CountriesController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $country = Country::findOrFail($id);
+            return redirect('/countries/' . $id . '/edit');
+        } catch (\Exception $ex) {
+            return redirect('/countries')->with('error-message', "Show Exception is " . $ex->getMessage());
+        }
     }
 
     /**
@@ -60,7 +68,15 @@ class CountriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $form_type  = 'update';
+        $countries  = Country::all();
+        try {
+            $country   = Country::findOrFail($id);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            return redirect('/countries')->with('error-message', 'Edit Exception is' . $e->getMessage());
+        }
+        return view('addresses.countries', compact('form_type', 'countries', 'country'));
     }
 
     /**
@@ -72,7 +88,14 @@ class CountriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $input = $request->all();
+            Country::findOrFail($id)->update($input);
+            flash()->overlay("Country updated successfully", 'Update');
+            return redirect('/countries');
+        } catch (\Exception $ex) {
+            return redirect('/countries/' . $id . '/edit')->with("error-message", "Update Exception is " . $ex->getMessage());
+        }
     }
 
     /**
@@ -83,6 +106,12 @@ class CountriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Country::findOrFail($id)->delete();
+            flash()->overlay("Country deleted successfully", 'Delete');
+            return redirect('/countries');
+        } catch (\Exception $ex) {
+            return redirect('/countries')->with("error-message", "Delete Exception is " . $ex->getMessage());
+        }
     }
 }

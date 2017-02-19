@@ -56,7 +56,7 @@
             <div class="col-md-1"></div>
         </div>
         <div class="form-actions noborder">
-            <button class="btn default pull-right" style="margin-left:9px;"><a href="{!! url('/forms') !!}">Cancel</a></button>
+            <button class="btn default pull-right" style="margin-left:9px;"><a href="{!! url('/countries') !!}">Cancel</a></button>
             <input type="submit" class="btn blue pull-right submit-button" value="Update">
         </div>
         {!! Form::close() !!}

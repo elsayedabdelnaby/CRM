@@ -28,6 +28,7 @@ Route::resource('/utprivileges', 'UTPrivilegesController');
 
 Route::resource('/countries', 'CountriesController');
 Route::get('/countries/{id}/destroy', 'CountriesController@destroy');
-Route::resource('/goverments', 'GovernmentsController');
+Route::resource('/governorates', 'GovernoratesController');
+Route::get('/governorates/{id}/destroy', 'GovernoratesController@destroy');
 Route::resource('/cities', 'CitiesController');
 Route::resource('/areas', 'AreasController');

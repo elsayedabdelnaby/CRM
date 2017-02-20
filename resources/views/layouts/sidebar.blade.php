@@ -55,28 +55,28 @@
                         </a>
                     </li>
                     <li class="nav-item  ">
-                        <a href="ui_general.html" class="nav-link ">
-                            <span class="title">General Components</span>
+                        <a href="{!! url('/modules') !!}" class="nav-link ">
+                            <span class="title">Modules</span>
                         </a>
                     </li>
                     <li class="nav-item  ">
-                        <a href="ui_buttons.html" class="nav-link ">
-                            <span class="title">Buttons</span>
+                        <a href="{!! url('/countries') !!}" class="nav-link ">
+                            <span class="title">Coutries</span>
                         </a>
                     </li>
                     <li class="nav-item  ">
-                        <a href="ui_buttons_spinner.html" class="nav-link ">
-                            <span class="title">Spinner Buttons</span>
+                        <a href="{!! url('/governorates') !!}" class="nav-link ">
+                            <span class="title">Governorates</span>
                         </a>
                     </li>
                     <li class="nav-item  ">
-                        <a href="ui_confirmations.html" class="nav-link ">
-                            <span class="title">Popover Confirmations</span>
+                        <a href="{!! url('/cities') !!}" class="nav-link ">
+                            <span class="title">Cities</span>
                         </a>
                     </li>
                     <li class="nav-item  ">
-                        <a href="ui_icons.html" class="nav-link ">
-                            <span class="title">Font Icons</span>
+                        <a href="{!! url('/areas') !!}" class="nav-link ">
+                            <span class="title">Areas</span>
                         </a>
                     </li>
                     <li class="nav-item  ">

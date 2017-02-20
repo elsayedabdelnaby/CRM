@@ -16,7 +16,7 @@ class GovernoratesController extends Controller
   public function index()
   {
       $form_type     = 'insert';
-      $governorates  = Governorate::all();
+      $governorates  = Governorate::where('id', '<>', 0)->get();
       $countries     = Country::pluck('name_en', 'id');
       $governorate   = array();
       return view('addresses.governorates', compact('form_type', 'governorates', 'governorate', 'countries'));
@@ -71,7 +71,7 @@ class GovernoratesController extends Controller
   public function edit($id)
   {
       $form_type     = 'update';
-      $governorates  = Governorate::all();
+      $governorates  = Governorate::where('id', '<>', 0);
       $countries     = Country::pluck('name_en', 'id');
       try {
           $governorate   = Governorate::findOrFail($id);

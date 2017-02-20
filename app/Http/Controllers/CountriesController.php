@@ -15,7 +15,7 @@ class CountriesController extends Controller
     public function index()
     {
         $form_type  = 'insert';
-        $countries  = Country::all();
+        $countries  = Country::where('id', '<>', 0)->get();
         $country    = array();
         return view('addresses.countries', compact('form_type', 'countries', 'country'));
     }
@@ -69,7 +69,7 @@ class CountriesController extends Controller
     public function edit($id)
     {
         $form_type  = 'update';
-        $countries  = Country::all();
+        $countries  = Country::where('id', '<>', 0);
         try {
             $country   = Country::findOrFail($id);
         } catch (\Exception $e) {

@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::get('/countries', 'APICountriesController@index');
+Route::get('/countries/{id}', 'APICountriesController@show');
+Route::delete('/countries/{id}', 'APICountriesController@destroy');
+Route::put('/countries/{id}', 'APICountriesController@update');
+Route::post('/countries', 'APICountriesController@store');

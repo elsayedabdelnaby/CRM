@@ -8,4 +8,9 @@ class City extends Model
 {
     protected $table    = 'lion_cities';
     protected $fillable = ['name_en', 'name_ar', 'governorte_id'];
+
+    public function Governorate()
+    {
+        return $this->belongsTo('App\Governorate');
+    }
 }

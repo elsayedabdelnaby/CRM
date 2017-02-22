@@ -54,6 +54,7 @@
 <script src="{!! url('/assets') !!}/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
 <script src="{!! url('/assets') !!}/js/table-datatables-buttons.min.js" type="text/javascript"></script>
+<script src="{!! url('/assets') !!}/js/customization.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="{!! url('/assets') !!}/js/app.min.js" type="text/javascript"></script>
@@ -72,5 +73,5 @@
 <!-- END FOOTER -->
 <!--[if lt IE 9]>
 <script src="{!! url('/assets') !!}/global/plugins/respond.min.js"></script>
-<script src="{!! url('/assets') !!}/global/plugins/excanvas.min.js"></script> 
+<script src="{!! url('/assets') !!}/global/plugins/excanvas.min.js"></script>
 <![endif]-->

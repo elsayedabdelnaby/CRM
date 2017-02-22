@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Country;
-use App\Governorate;
-use App\City;
 
-class CitiesController extends Controller
+class APICountriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +14,7 @@ class CitiesController extends Controller
      */
     public function index()
     {
-        $form_type    = 'insert';
-        $countries    = Country::pluck('name_en', 'id');
-        $governorates = Governorate::pluck('name_en', 'id');
-        $city         = array();
-        $cities       = City::where('id', '<>', 0)->get();
-        return view('addresses.cities', compact('form_type', 'countries', 'governorates', 'city', 'cities'));
+        return Country::where('id', '<>', 0)->get();
     }
 
     /**
@@ -53,7 +46,7 @@ class CitiesController extends Controller
      */
     public function show($id)
     {
-        //
+        return Country::where('id', $id)->get();
     }
 
     /**
@@ -87,6 +80,6 @@ class CitiesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Country::where('id', $id)->delete();
     }
 }

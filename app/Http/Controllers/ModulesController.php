@@ -19,7 +19,7 @@ class ModulesController extends Controller
         $module     = array();
         return view('modules.modules', compact('form_type', 'modules', 'module'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +29,7 @@ class ModulesController extends Controller
     {
         return redirect('/modules');
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,7 +43,7 @@ class ModulesController extends Controller
         flash()->overlay("Module Created successfully", 'Create');
         return redirect('/modules');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -55,11 +55,11 @@ class ModulesController extends Controller
         try {
             $module = Module::findOrFail($id);
             return redirect('/modules/' . $id . '/edit');
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             return redirect('/modules')->with('error-message', "Show Exception is " . $ex->getMessage());
         }
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -93,7 +93,7 @@ class ModulesController extends Controller
             Module::findOrFail($id)->update($input);
             flash()->overlay("Module updated successfully", 'Update');
             return redirect('/modules');
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             return redirect('/modules/' . $id . '/edit')->with("error-message", "Update Exception is " . $ex->getMessage());
         }
     }
@@ -110,7 +110,7 @@ class ModulesController extends Controller
             Module::findOrFail($id)->delete();
             flash()->overlay("Module deleted successfully", 'Delete');
             return redirect('/modules');
-        } catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             return redirect('/modules')->with("error-message", "Delete Exception is " . $ex->getMessage());
         }
     }

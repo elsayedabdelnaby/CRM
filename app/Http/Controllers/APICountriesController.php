@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Country;
+use App\Governorate;
 
 class APICountriesController extends Controller
 {
@@ -81,5 +82,16 @@ class APICountriesController extends Controller
     public function destroy($id)
     {
         return Country::where('id', $id)->delete();
+    }
+
+    /**
+     * Get governorates related to this Country.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function governorates($id)
+    {
+        return Governorate::where('country_id', $id)->get();
     }
 }

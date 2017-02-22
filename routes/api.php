@@ -19,6 +19,7 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/countries', 'APICountriesController@index');
 Route::get('/countries/{id}', 'APICountriesController@show');
+Route::get('/countries/{id}/governorates', 'APICountriesController@governorates');
 Route::delete('/countries/{id}', 'APICountriesController@destroy');
 Route::put('/countries/{id}', 'APICountriesController@update');
 Route::post('/countries', 'APICountriesController@store');

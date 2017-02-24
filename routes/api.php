@@ -23,3 +23,10 @@ Route::get('/countries/{id}/governorates', 'APICountriesController@governorates'
 Route::delete('/countries/{id}', 'APICountriesController@destroy');
 Route::put('/countries/{id}', 'APICountriesController@update');
 Route::post('/countries', 'APICountriesController@store');
+
+Route::get('/governorates', 'APIGovernoratesController@index');
+Route::get('/governorates/{id}', 'APIGovernoratesController@show');
+Route::delete('/governorates/{id}', 'APIGovernoratesController@destroy');
+Route::put('/governorates/{id}', 'APIGovernoratesController@update');
+Route::post('/governorates', 'APIGovernoratesController@store');
+Route::get('/governorates/{id}/cities', 'APIGovernoratesController@cities');

@@ -7,20 +7,19 @@ use App\Country;
 use App\Governorate;
 use App\City;
 
-class CitiesController extends Controller
-{
+class CitiesController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $form_type    = 'insert';
-        $countries    = Country::pluck('name_en', 'id');
-        $governorates = Governorate::pluck('name_en', 'id');
-        $city         = array();
-        $cities       = City::where('id', '<>', 0)->get();
+    public function index() {
+        $form_type      = 'insert';
+        $countries      = Country::pluck('name_en', 'id');
+        $governorates   = Governorate::pluck('name_en', 'id');
+        $city           = array();
+        $cities         = City::where('id', '<>', 0)->get();
         return view('addresses.cities', compact('form_type', 'countries', 'governorates', 'city', 'cities'));
     }
 
@@ -29,9 +28,8 @@ class CitiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        return redirect('/cities');
     }
 
     /**
@@ -40,9 +38,11 @@ class CitiesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $input = $request->all();
+        City::create($input);
+        flash()->overlay('City Created Successfuly', 'Create');
+        return redirect('/cities');
     }
 
     /**
@@ -51,9 +51,13 @@ class CitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id) {
+        try {
+            $governorate = Governorate::findOrFail($id);
+            return redirect('/governorates/' . $id . '/edit');
+        } catch (\Exception $ex) {
+            return redirect('/governorates')->with('error-message', "Show Exception is " . $ex->getMessage());
+        }
     }
 
     /**
@@ -62,9 +66,19 @@ class CitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        $form_type  = 'update';
+        $countries  = Country::pluck('name_en', 'id');
+        $cities     = City::where('id', '<>', 0)->get();
+        try {
+            $city         = City::findOrFail($id);
+            $governorates = Governorate::where('country_id', $city->country_id)
+                    ->pluck('name_en', 'id');
+        } catch (\Exception $e) {
+            $e->getMessage();
+            return redirect('/cities')->with('error-message', 'Edit Exception is' . $e->getMessage());
+        }
+        return view('addresses.cities', compact('form_type', 'countries', 'governorates', 'cities', 'city'));
     }
 
     /**
@@ -74,9 +88,15 @@ class CitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        try {
+            $input = $request->all();
+            City::findOrFail($id)->update($input);
+            flash()->overlay("City updated successfully", 'Update');
+            return redirect('/cities');
+        } catch (\Exception $ex) {
+            return redirect('/cities/' . $id . '/edit')->with("error-message", "Update Exception is " . $ex->getMessage());
+        }
     }
 
     /**
@@ -85,8 +105,14 @@ class CitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        try {
+            City::findOrFail($id)->delete();
+            flash()->overlay("City deleted successfully", 'Delete');
+            return redirect('/cities');
+        } catch (\Exception $ex) {
+            return redirect('/cities')->with("error-message", "Delete Exception is " . $ex->getMessage());
+        }
     }
+
 }

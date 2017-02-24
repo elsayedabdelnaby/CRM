@@ -53,10 +53,10 @@ class CitiesController extends Controller {
      */
     public function show($id) {
         try {
-            $governorate = Governorate::findOrFail($id);
-            return redirect('/governorates/' . $id . '/edit');
+            $city = Governorate::findOrFail($id);
+            return redirect('/city/' . $id . '/edit');
         } catch (\Exception $ex) {
-            return redirect('/governorates')->with('error-message', "Show Exception is " . $ex->getMessage());
+            return redirect('/city')->with('error-message', "Show Exception is " . $ex->getMessage());
         }
     }
 

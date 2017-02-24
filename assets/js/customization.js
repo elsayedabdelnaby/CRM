@@ -5,7 +5,6 @@ function createOptionsList(list, data) {
     $(list).append('<option value="0">Select</option>');
     var index;
     for (index = 0; index < data.length; index += 1) {
-        console.log(data[index]['name_en']);
         $(list).append($('<option></option>')
                 .attr('value', data[index]['id'])
                 .text(data[index]['name_en'])
@@ -14,11 +13,17 @@ function createOptionsList(list, data) {
 }
 
 $(document).ready(function () {
-    var countriesList       = $('#countriesList');
-    var governoratesList    = $('#governoratesList');
+    var countriesList    = $('#countriesList');
+    var governoratesList = $('#governoratesList');
+    var citiesList       = $('#citiesList');
+    
     if ($(countriesList).val() == 0) {
         $(governoratesList).attr('disabled', 'disabled');
     }
+    if($(governoratesList).val() == 0) {
+        $(citiesList).attr('disabled', 'disabled');
+    }
+    
     $(countriesList).change(function () {
         if ($(countriesList).val() > 0) {
             $(governoratesList).removeAttr("disabled");
@@ -27,7 +32,22 @@ $(document).ready(function () {
                 createOptionsList(governoratesList, data);
             });
         } else {
+            $(governoratesList).val(0);
+            $(governoratesList).change();
             $(governoratesList).attr('disabled', 'disabled');
+        }
+    });
+    
+    $(governoratesList).change(function () {
+        if ($(governoratesList).val() > 0) {
+            $(citiesList).removeAttr("disabled");
+            var url = '/the-king/api/governorates/' + $(governoratesList).val() + '/cities';
+            $.get(url, function (data, status) {
+                createOptionsList(citiesList, data);
+            });
+        } else {
+            $(citiesList).val(0);
+            $(citiesList).attr('disabled', 'disabled');
         }
     });
 });

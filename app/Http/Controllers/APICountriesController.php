@@ -36,7 +36,8 @@ class APICountriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        return Country::create($input);
     }
 
     /**
@@ -70,7 +71,7 @@ class APICountriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return Country::where('id', $id)->update($request->all());
     }
 
     /**
@@ -81,7 +82,11 @@ class APICountriesController extends Controller
      */
     public function destroy($id)
     {
-        return Country::where('id', $id)->delete();
+        try {
+            return Country::where('id', $id)->delete();
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
     }
 
     /**

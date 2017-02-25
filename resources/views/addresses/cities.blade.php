@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="form-group form-md-line-input form-md-floating-label col-md-4">
-                {!! Form::select('country_id', $countries, null, array('class'=>'form-control', 'aria-required'=>'true', 'aria-invalid'=>'false', 'aria-describedby'=>'delivery-error', 'id'=>'countriesList')) !!}
+                {!! Form::select('country_id', $countries, null, array('class'=>'form-control', 'id'=>'countriesList', 'required')) !!}
                 <span id="delivery-error" class="help-block help-block-error"></span>
                 <label for="form_control_1">Country</label>
             </div>
@@ -34,8 +34,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="form-group form-md-line-input form-md-floating-label col-md-4">
-                {!! Form::select('governorate_id', $governorates, null, array('class'=>'form-control', 'aria-required'=>'true', 'aria-invalid'=>'false', 'aria-describedby'=>'delivery-error', 'id'=>'governoratesList')) !!}
-                <span id="delivery-error" class="help-block help-block-error"></span>
+                {!! Form::select('governorate_id', $governorates, null, array('class'=>'form-control', 'id'=>'governoratesList', 'required')) !!}
                 <label for="form_control_1">Governorate</label>
             </div>
         </div>
@@ -64,7 +63,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="form-group form-md-line-input form-md-floating-label col-md-4">
-                {!! Form::select('country_id', $countries, null, array('class'=>'form-control', 'aria-required'=>'true', 'aria-invalid'=>'false', 'aria-describedby'=>'delivery-error', 'id'=>'countriesList')) !!}
+                {!! Form::select('country_id', $countries, null, array('class'=>'form-control', 'id'=>'countriesList', 'required')) !!}
                 <span id="delivery-error" class="help-block help-block-error"></span>
                 <label for="form_control_1">Country</label>
             </div>
@@ -78,7 +77,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="form-group form-md-line-input form-md-floating-label col-md-4">
-                {!! Form::select('governorate_id', $governorates, null, array('class'=>'form-control', 'aria-required'=>'true', 'aria-invalid'=>'false', 'aria-describedby'=>'delivery-error', 'id'=>'governoratesList')) !!}
+                {!! Form::select('governorate_id', $governorates, null, array('class'=>'form-control', 'id'=>'governoratesList', 'required')) !!}
                 <span id="delivery-error" class="help-block help-block-error"></span>
                 <label for="form_control_1">Governorate</label>
             </div>

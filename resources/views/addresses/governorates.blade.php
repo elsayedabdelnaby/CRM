@@ -28,8 +28,7 @@
         <div class="form-body row">
           <div class="col-md-3"></div>
           <div class="form-group form-md-line-input form-md-floating-label col-md-4">
-              {!! Form::select('country_id', $countries, null, array('class'=>'form-control', 'aria-required'=>'true', 'aria-invalid'=>'false', 'aria-describedby'=>'delivery-error')) !!}
-              <span id="delivery-error" class="help-block help-block-error"></span>
+              {!! Form::select('country_id', $countries, null, array('class'=>'form-control', 'required')) !!}
               <label for="form_control_1">Country</label>
           </div>
         </div>
@@ -66,7 +65,7 @@
         <div class="form-body row">
           <div class="col-md-3"></div>
           <div class="form-group form-md-line-input form-md-floating-label col-md-4">
-              {!! Form::select('country_id', $countries, null, array('class'=>'form-control', 'aria-required'=>'true', 'aria-invalid'=>'false', 'aria-describedby'=>'delivery-error')) !!}
+              {!! Form::select('country_id', $countries, null, array('class'=>'form-control', 'required')) !!}
               <span id="delivery-error" class="help-block help-block-error"></span>
               <label for="form_control_1">Country</label>
           </div>

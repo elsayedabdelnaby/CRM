@@ -83,7 +83,7 @@ class AddressesController extends Controller
                     ->pluck('name_en', 'id');
             $cities         = City::where('governorate_id', $address->governorate_id)
                     ->pluck('name_en', 'id');
-            $areas          = Area::where('area_id', $address->area_id)
+            $areas          = Area::where('city_id', $address->city_id)
                     ->pluck('name_en', 'id');
         } catch (\Exception $e) {
             $e->getMessage();

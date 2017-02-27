@@ -37,3 +37,6 @@ Route::get('/cities/{id}/destroy', 'CitiesController@destroy');
 
 Route::resource('/areas', 'AreasController');
 Route::get('/areas/{id}/destroy', 'AreasController@destroy');
+
+Route::resource('/addresses', 'AddressesController');
+Route::get('/addresses/{id}/destroy', 'AddressesController@destroy');

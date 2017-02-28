@@ -16,12 +16,16 @@ $(document).ready(function () {
     var countriesList    = $('#countriesList');
     var governoratesList = $('#governoratesList');
     var citiesList       = $('#citiesList');
+    var areasList        = $('#areasList');
     
     if ($(countriesList).val() == 0) {
         $(governoratesList).attr('disabled', 'disabled');
     }
     if($(governoratesList).val() == 0) {
         $(citiesList).attr('disabled', 'disabled');
+    }
+    if($(citiesList).val() == 0) {
+        $(areasList).attr('disabled', 'disabled');
     }
     
     $(countriesList).change(function () {
@@ -50,4 +54,18 @@ $(document).ready(function () {
             $(citiesList).attr('disabled', 'disabled');
         }
     });
+    
+    $(citiesList).change(function () {
+        if ($(citiesList).val() > 0) {
+            $(areasList).removeAttr("disabled");
+            var url = '/the-king/api/cities/' + $(citiesList).val() + '/areas';
+            $.get(url, function (data, status) {
+                createOptionsList(areasList, data);
+            });
+        } else {
+            $(areasList).val(0);
+            $(areasList).attr('disabled', 'disabled');
+        }
+    });
+    
 });

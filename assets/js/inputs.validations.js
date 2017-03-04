@@ -3,6 +3,7 @@ var InputValidation = function (element) {
     'use strict';
 
     var sArabicPattern = /^([\0-\9]|[\u0600-\u06ff]|[\u0750-\u077f]|[\ufb50-\ufbc1]|[\ufbd3-\ufd3f]|[\ufd50-\ufd8f]|[\ufd92-\ufdc7]|[\ufe70-\ufefc]|[\ufdf0-\ufdfd]|[ ])*$/g,
+            sNumberPattern = /^[0-9]+$/i,
             /*check if the element is arabic string or not */
             check_arabic_string = function () {
                 if (sArabicPattern.test($(element).val())) {
@@ -83,6 +84,19 @@ var InputValidation = function (element) {
 
                 return sError;
             },
+            validate_number_input = function () {
+                var sError = "";
+                if (this.isRequired()) {
+                    if (this.isEmpty()) {
+                        sError = "This field required";
+                    } else {
+                        if (!sNumberPattern.test($(element).val())) {
+                            sError = 'This field must be number';
+                        }
+                    }
+                }
+                return sError;
+            },
             validate_dropdown_input = function () {
                 if (this.isRequired() && $(element).val() < 1) {
                     return 'This field is required';
@@ -99,7 +113,8 @@ var InputValidation = function (element) {
         isArabic: check_arabic_required,
         isEnglish: check_english_required,
         validateTextInput: validate_text_input,
-        validateDropdownInput: validate_dropdown_input
+        validateDropdownInput: validate_dropdown_input,
+        validateNumberInput: validate_number_input
     };
 };
 
@@ -158,6 +173,7 @@ function toggleForm(bError, oFormChild) {
 $('.submit-button').bind('click', function () {
     'use strict';
     var aAllTextInputs = $(this).parents('form').find('input[type="text"]'),
+            aAllNumberInputs = $(this).parents('form').find('input[number="number"]'),
             aAllCheckBoxes = $(this).parents('form').find('input[type="checkbox"]'),
             aAllRadioButtons = $(this).parents('form').find('input[type="radio"]'),
             aAllSelects = $(this).parents('form').find('select'),
@@ -186,6 +202,16 @@ $('.submit-button').bind('click', function () {
         }
     }
 
+    for (index = 0; index < aAllNumberInputs.length; index += 1) {
+        var oInput = new InputValidation(aAllNumberInputs[index]),
+                sError = oInput.validateNumberInput();
+        if (sError !== "") {
+            bError = 1;
+            appendError(sError, aAllNumberInputs[index]);
+        } else if (($($(aAllNumberInputs[index]).parent()).children('span')).text() !== "") {
+            removeError(aAllNumberInputs[index]);
+        }
+    }
     toggleForm(bError, ".submit-button");
 
 });

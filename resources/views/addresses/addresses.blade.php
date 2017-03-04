@@ -36,7 +36,7 @@
 
             <div class="col-md-1"></div>
             <div class="form-group form-md-line-input form-md-floating-label col-md-4">
-                {!! Form::number('building_no', null, array('class'=>'form-control', 'id'=>'form_control_1', 'required', 'number')) !!}
+                {!! Form::text('building_no', null, array('class'=>'form-control', 'id'=>'form_control_1', 'required', 'number')) !!}
                 <label for="form_control_1">Building NO</label>
             </div>
         </div>
@@ -49,7 +49,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="form-group form-md-line-input form-md-floating-label col-md-4">
-                {!! Form::number('floor_no', null, array('class'=>'form-control', 'id'=>'form_control_1', 'required', 'number')) !!}
+                {!! Form::text('floor_no', null, array('class'=>'form-control', 'id'=>'form_control_1', 'required', 'number')) !!}
                 <label for="form_control_1">Floor NO</label>
             </div>
         </div>
@@ -62,7 +62,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="form-group form-md-line-input form-md-floating-label col-md-4">
-                {!! Form::number('flat_no', null, array('class'=>'form-control', 'id'=>'form_control_1', 'required', 'number')) !!}
+                {!! Form::text('flat_no', null, array('class'=>'form-control', 'id'=>'form_control_1', 'required', 'number')) !!}
                 <label for="form_control_1">Flat NO</label>
             </div>
         </div>
